@@ -1,0 +1,48 @@
+@prefix : <http://example.org/#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/>
+    a owl:Ontology .
+
+:Human
+    a owl:Class ;
+    rdfs:comment "Класс 'Человек'"@ru .
+
+:hasParent
+    a owl:ObjectProperty ;
+    rdfs:domain :Human ;
+    rdfs:range :Human ;
+    rdfs:comment "Свойство 'имеет родителя', связанное с одним экземпляром Human."@ru ;
+    owl:inverseOf :isParentOf .
+
+:isParentOf
+    a owl:ObjectProperty ;
+    rdfs:domain :Human ;
+    rdfs:range :Human ;
+    rdfs:comment "Обратное свойство 'является родителем'."@ru .
+
+:ancestor
+    a owl:TransitiveProperty, owl:ObjectProperty ;
+    rdfs:subPropertyOf :hasParent ;
+    rdfs:domain :Human ;
+    rdfs:range :Human ;
+    rdfs:comment "Транситивное свойство 'предок'. Используется для вычисления цепочки родителей."@ru .
+
+:descendant
+    a owl:TransitiveProperty, owl:ObjectProperty ;
+    rdfs:subPropertyOf :isParentOf ;
+    rdfs:domain :Human ;
+    rdfs:range :Human ;
+    rdfs:comment "Транситивное свойство 'потомок'. Используется для вычисления цепочки детей."@ru .
+
+# Экземпляры класса Human
+:John
+    a :Human ;
+    :hasParent :Mary .
+
+:Mary
+    a :Human .
