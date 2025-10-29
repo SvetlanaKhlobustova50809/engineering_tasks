@@ -1,0 +1,55 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:    <http://example.org/> .
+
+ex:Person a owl:Class ;
+    rdfs:label "Человек"@ru .
+
+ex:Animal a owl:Class ;
+    rdfs:label "Животное"@ru .
+
+ex:Plant a owl:Class ;
+    rdfs:label "Растение"@ru .
+
+ex:eats a owl:ObjectProperty ;
+    rdfs:domain ex:Person ;
+    rdfs:range ex:Animal, ex:Plant ;
+    rdfs:label "Ест"@ru .
+
+ex:livesIn a owl:ObjectProperty ;
+    rdfs:domain ex:Person, ex:Animal ;
+    rdfs:range ex:Location ;
+    rdfs:label "Живёт в"@ru .
+
+ex:Moscow a ex:Location ;
+    rdfs:label "Москва"@ru .
+
+ex:Ivan a ex:Person ;
+    rdfs:label "Иван"@ru ;
+    ex:eats ex:Rabbit, ex:AppleTree ;
+    ex:livesIn ex:Moscow .
+
+ex:Rabbit a ex:Animal ;
+    rdfs:label "Заяц"@ru ;
+    ex:livesIn ex:Moscow .
+
+ex:AppleTree a ex:Plant ;
+    rdfs:label "Яблоня"@ru ;
+    ex:livesIn ex:Moscow .
+
+ex:Kazan a ex:Location ;
+    rdfs:label "Казань"@ru .
+
+ex:Peter a ex:Person ;
+    rdfs:label "Пётр"@ru ;
+    ex:eats ex:Beef, ex:OakTree ;
+    ex:livesIn ex:Kazan .
+
+ex:Beef a ex:Animal ;
+    rdfs:label "Говядина"@ru .
+
+ex:OakTree a ex:Plant ;
+    rdfs:label "Дуб"@ru ;
+    ex:livesIn ex:Kazan .
