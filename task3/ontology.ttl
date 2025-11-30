@@ -1,0 +1,97 @@
+@prefix : <http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/> .
+
+<http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/включает
+:включает rdf:type owl:ObjectProperty ,
+                   owl:TransitiveProperty .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/имеет_автора
+:имеет_автора rdf:type owl:ObjectProperty .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/обращается_к
+:обращается_к rdf:type owl:ObjectProperty .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/обучается_на_программе
+:обучается_на_программе rdf:type owl:ObjectProperty .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/ВалидныйЗапрос
+:ВалидныйЗапрос rdf:type owl:Class .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/ОбразовательнаяПрограмма
+:ОбразовательнаяПрограмма rdf:type owl:Class .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/ОбращениеКРесурсу
+:ОбращениеКРесурсу rdf:type owl:Class .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Предмет
+:Предмет rdf:type owl:Class .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Студент
+:Студент rdf:type owl:Class .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/ЭлектронныйОбразовательныйРесурс
+:ЭлектронныйОбразовательныйРесурс rdf:type owl:Class .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Анна_Смирнова
+:Анна_Смирнова rdf:type owl:NamedIndividual ,
+                        :Студент ;
+               :обучается_на_программе :Программная_инженерия .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Базы_данных
+:Базы_данных rdf:type owl:NamedIndividual ,
+                      :Предмет ;
+             :включает :SQL_учебник .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Программная_инженерия
+:Программная_инженерия rdf:type owl:NamedIndividual ,
+                                :ОбразовательнаяПрограмма ;
+                       :включает :Базы_данных .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/SQL_учебник
+:SQL_учебник rdf:type owl:NamedIndividual ,
+                      :ЭлектронныйОбразовательныйРесурс .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/запрос_Анны
+:запрос_Анны rdf:type owl:NamedIndividual ,
+                      :ОбращениеКРесурсу ;
+             :имеет_автора :Анна_Смирнова ;
+             :обращается_к :SQL_учебник .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Иван_Петров
+:Иван_Петров rdf:type owl:NamedIndividual ,
+                      :Студент ;
+             :обучается_на_программе :Экономика .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/Экономика
+:Экономика rdf:type owl:NamedIndividual ,
+                    :ОбразовательнаяПрограмма ;
+           :включает :Микроэкономика .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иван-Петр/task3/Микроэкономика
+:Микроэкономика rdf:type owl:NamedIndividual ,
+                         :Предмет .
+
+###  http://kik.misis.ru/ontology/mpi/2024/Иванов-Петр/task3/запрос_Ивана
+:запрос_Ивана rdf:type owl:NamedIndividual ,
+                       :ОбращениеКРесурсу ;
+              :имеет_автора :Иван_Петров ;
+              :обращается_к :SQL_учебник .
